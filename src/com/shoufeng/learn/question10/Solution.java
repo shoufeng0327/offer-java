@@ -8,6 +8,9 @@ package com.shoufeng.learn.question10;
 public class Solution {
 
   public int RectCover(int target) {
+    if (target == 0){
+      return 1;
+    }
     if (target == 1) {
       return 1;
     }

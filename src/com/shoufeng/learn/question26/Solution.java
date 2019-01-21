@@ -7,22 +7,36 @@ package com.shoufeng.learn.question26;
  */
 
 /**
- public class TreeNode {
- int val = 0;
- TreeNode left = null;
- TreeNode right = null;
-
- public TreeNode(int val) {
- this.val = val;
-
- }
-
- }
+ * public class TreeNode { int val = 0; TreeNode left = null; TreeNode right = null;
+ *
+ * public TreeNode(int val) { this.val = val;
+ *
+ * }
+ *
+ * }
  */
 public class Solution {
 
+  TreeNode pre = null;
+  TreeNode lastLeft = null;
+  boolean isFirst = true;
+
   public TreeNode Convert(TreeNode pRootOfTree) {
-    return null;
+    if (pRootOfTree == null){
+      return null;
+    }
+    Convert(pRootOfTree.left);
+    if (isFirst){
+      pre = pRootOfTree;
+      lastLeft = pRootOfTree;
+      isFirst = false;
+    }else {
+      pre.right = pRootOfTree;
+      pRootOfTree.left = pre;
+      pre = pRootOfTree;
+    }
+    Convert(pRootOfTree.right);
+    return lastLeft;
   }
 
   public class TreeNode {
